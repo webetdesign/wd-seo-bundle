@@ -12,25 +12,25 @@ trait SmoOpenGraphAdminTrait
     public function addFormFieldSmoOpenGraph($formMapper)
     {
         $formMapper
-            ->with('cms_page.form.seo.open_graph',
+            ->with('wd_seo.form.seo.open_graph',
                 ['class' => 'col-xs-12 col-md-4', 'box_class' => ''])
             ->add('og_title', TextType::class, [
-                'label'    => 'cms_page.form.og_title.label',
+                'label'    => 'wd_seo.form.og_title.label',
                 'required' => false
 
             ])
             ->add('og_type', TextType::class, [
-                'label'    => 'cms_page.form.og_type.label',
+                'label'    => 'wd_seo.form.og_type.label',
                 'required' => false
 
             ])
             ->add('og_description', TextareaType::class, [
-                'label'    => 'cms_page.form.og_description.label',
+                'label'    => 'wd_seo.form.og_description.label',
                 'required' => false
 
             ])
             ->add('og_site_name', TextType::class, [
-                'label'    => 'cms_page.form.og_site_name.label',
+                'label'    => 'wd_seo.form.og_site_name.label',
                 'required' => false
 
             ])
