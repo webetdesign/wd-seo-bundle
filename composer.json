@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "WebEtDesign\\SEoBundle\\": "src"
+      "WebEtDesign\\SeoBundle\\": "src"
     }
   },
   "extra": {
