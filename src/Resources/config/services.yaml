@@ -1,0 +1,20 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  WebEtDesign\SeoBundle\:
+    resource: '../../*'
+    exclude:
+      - '../../DependencyInjection'
+      - '../../Entity'
+
+  WebEtDesign\SeoBundle\Twig\SeoTwigExtension:
+    arguments:
+      - '@service_container'
+      - '@parameter_bag'
+      - '@WebEtDesign\MediaBundle\Services\WDMediaService'
+      - '@WebEtDesign\CmsBundle\Services\WDDeclinationService'
+      - '@http_client'
+    tags:
+      - { name: 'twig.extension' }

@@ -1,0 +1,21 @@
+wd_seo.form.seo_title.label: Titre (balise title)
+wd_seo.form.seo_description.label: Description (balise description)
+
+wd_seo.form.seo.open_graph: Partage (OpenGraph)
+wd_seo.form.seo.twitter: Partage Twitter
+wd_seo.form.og_title.label: Titre du lien
+wd_seo.form.og_type.label: Type (article|website|book|music|video)
+wd_seo.form.og_url.label: Lien (URL de la page)
+wd_seo.form.og_image.label: Image
+wd_seo.form.og_image.help: Taille de l'image 1200 x 627
+wd_seo.form.og_description.label: Courte description (4 phrases max.)
+wd_seo.form.og_site_name.label: Nom du site
+wd_seo.form.og_admins.label: Administrateur (obsolète)
+
+wd_seo.form.twitter_card.label: 'Type de présentation (summary|summary_large_image|app|player)'
+wd_seo.form.twitter_site.label: 'Nom du site (@compte pour lier au compte twitter)'
+wd_seo.form.twitter_title.label: 'Titre du tweet'
+wd_seo.form.twitter_description.label: 'Contenu du tweet (280 caractères)'
+wd_seo.form.twitter_creator.label: 'Auteur du contenu (@auteur pour lier à un compte twitter)'
+wd_seo.form.twitter_image.label: Image
+wd_seo.form.twitter_image.help: Taille de l'image 1200 x 627

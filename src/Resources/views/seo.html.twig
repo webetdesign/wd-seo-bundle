@@ -1,0 +1,112 @@
+{#
+Hydrate the include like this on single entity page as example :
+{% block seo_head %}
+    {% include 'partials/_seoHead--entities.html.twig' with{
+        "page" : page,
+        "object" : "instance of entity which use SmoTwitterTrait SmoOpenGraphTrait SmoTwitterTrait",
+        "title": entity.title,
+        "desc": entity.description,
+        "img": entity.pictures.first ? entity.pictures.first|wd_media_image_path_autoload("ogsquare", "xl"),
+    } %}
+{% endblock %}
+#}
+
+<title>
+    {% block title %}
+        {% if object is defined and wd_seo_render_value(object, 'seoTitle') is not empty %}
+            {{ wd_seo_render_value(object, 'seoTitle', '') }}
+        {% elseif title is defined %}
+            {{ title|striptags|slice(0, 50) }}{{ title|length > 50 ? "..." }}
+        {% elseif page is defined and wd_seo_render_value(page, 'seoTitle') is not empty %}
+            {{ wd_seo_render_value(page, 'seoTitle', '') }}
+        {% endif %}
+    {% endblock %}
+</title>
+
+{% block seo_description %}
+    {% if object is defined and wd_seo_render_value(object, 'seoDescription') is not empty %}
+        <meta name="description" content="{{ wd_seo_render_value(object, 'seoDescription') }}">
+    {% elseif desc is defined and desc is not empty %}
+        <meta name="description"
+              content="{{ desc|striptags|slice(0, 157) }}{{ desc|length > 157 ? "..." }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'seoDescription') is not empty %}
+        <meta name="description" content="{{ wd_seo_render_value(page, 'seoDescription') }}">
+    {% endif %}
+{% endblock %}
+
+{% block metaSMO %}
+    {% if object is defined and wd_seo_render_value(object, 'twitterCard') is not empty %}
+        <meta name="twitter:card" content="{{ wd_seo_render_value(object, 'twitterCard') }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'twitterCard') is not empty %}
+        <meta name="twitter:card" content="{{ wd_seo_render_value(page, 'twitterCard') }}">
+    {% endif %}
+
+    <meta name="twitter:site" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+
+    {% if object is defined and wd_seo_render_value(object, 'twitterTitle') is not empty %}
+        <meta name="twitter:title" content="{{ wd_seo_render_value(object, 'twitterTitle') }}">
+    {% elseif title is defined and title is not empty %}
+        <meta name="twitter:title" content="{{ title }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'twitterTitle') is not empty %}
+        <meta name="twitter:title" content="{{ wd_seo_render_value(page, 'twitterTitle') }}">
+    {% endif %}
+
+    {% if object is defined and wd_seo_render_value(object, 'twitterDescription') is not empty %}
+        <meta name="twitter:description" content="{{ wd_seo_render_value(object, 'twitterDescription') }}">
+    {% elseif desc is defined and desc is not empty %}
+        <meta name="twitter:description"
+              content="{{ desc|striptags|slice(0, 157) }}{{ desc|length > 157 ? "..." }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'twitterDescription') is not empty %}
+        <meta name="twitter:description" content="{{ wd_seo_render_value(page, 'twitterDescription') }}">
+    {% endif %}
+
+
+    {% if object is defined and wd_seo_render_value(object, 'twitterImage') is not empty %}
+        <meta name="twitter:image" content="{{ wd_seo_render_value(object, 'twitterImage') }}">
+    {% elseif img is defined and img is not empty %}
+        <meta name="twitter:image" content="{{ img }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'twitterImage') is not empty %}
+        <meta name="twitter:image" content="{{ wd_seo_render_value(page, 'twitterImage') }}">
+    {% endif %}
+
+    <!-- Open Graph data -->
+    {% if object is defined and wd_seo_render_value(object, 'ogTitle') is not empty %}
+        <meta property="og:title" content="{{ wd_seo_render_value(object, 'ogTitle') }}">
+    {% elseif title is defined and title is not empty %}
+        <meta property="og:title" content="{{ title }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'ogTitle') is not empty %}
+        <meta name="og:title" content="{{ wd_seo_render_value(page, 'ogTitle') }}">
+    {% endif %}
+
+    {% if object is defined and wd_seo_render_value(object, 'ogImage') is not empty %}
+        <meta property="og:image" content="{{ wd_seo_render_value(object, 'ogImage') }}">
+    {% elseif img is defined and img is not empty %}
+        <meta property="og:image" content="{{ img }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'ogImage') is not empty %}
+        <meta name="og:image" content="{{ wd_seo_render_value(page, 'ogImage') }}">
+    {% endif %}
+
+    <meta property="og:type" content="website">
+{#    {% if object is defined and wd_seo_render_value(object, 'ogType') is not empty %}#}
+{#        <meta property="og:type" content="{{ wd_seo_render_value(object, 'ogType') }}">#}
+{#    {% elseif ogType is defined %}#}
+{#    {% elseif page is defined and wd_seo_render_value(page, 'ogType') is not empty %}#}
+{#        <meta name="og:type" content="{{ wd_seo_render_value(page, 'ogType') }}">#}
+{#    {% endif %}#}
+
+    {% if object is defined and wd_seo_render_value(object, 'ogDescription') is not empty %}
+        <meta property="og:description" content="{{ wd_seo_render_value(object, 'ogDescription') }}">
+    {% elseif desc is defined and desc is not empty %}
+        <meta property="og:description" content="{{ desc|striptags|slice(0, 157) }}{{ desc|length > 157 ? "..." }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'ogDescription') is not empty %}
+        <meta name="og:description" content="{{ wd_seo_render_value(page, 'ogDescription') }}">
+    {% endif %}
+
+    {% if object is defined and wd_seo_render_value(object, 'ogSiteName') is not empty %}
+        <meta property="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
+    {% elseif page is defined and wd_seo_render_value(page, 'ogSiteName') is not empty %}
+        <meta name="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
+    {% endif %}
+
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+{% endblock %}
