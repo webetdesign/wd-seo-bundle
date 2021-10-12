@@ -20,6 +20,13 @@ trait SeoAwareTrait
      */
     private ?string $seoDescription = null;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $seoKeywords = null;
+
     public function getSeoTitle(): ?string
     {
         if ($this->seoTitle === null) {
@@ -47,4 +54,22 @@ trait SeoAwareTrait
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getSeoKeywords(): ?string
+    {
+        return $this->seoKeywords;
+    }
+
+    /**
+     * @param string|null $seoKeywords
+     */
+    public function setSeoKeywords(?string $seoKeywords): void
+    {
+        $this->seoKeywords = $seoKeywords;
+    }
+
+
 }
