@@ -14,53 +14,53 @@ trait SmoOpenGraphTrait
     /**
      * @var string|null
      *
-     * @ORM\Column(name="og_title", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $og_title = null;
+    private ?string $ogTitle = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="og_type", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $og_type = null;
+    private ?string $ogType = null;
 
     /**
      * @var Media|null
      *
      * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
      */
-    private ?Media $og_image = null;
+    private ?Media $ogImage = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="og_description", type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    private ?string $og_description = null;
+    private ?string $ogDescription = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="og_site_name", type="string", nullable=true)
+     * @ORM\Column( type="string", nullable=true)
      */
-    private ?string $og_site_name = null;
+    private ?string $ogSiteName = null;
 
     /**
      * @return string|null
      */
     public function getOgTitle(): ?string
     {
-        return $this->og_title;
+        return $this->ogTitle;
     }
 
     /**
-     * @param string|null $og_title
+     * @param string|null $ogTitle
      * @return SmoOpenGraphTrait
      */
-    public function setOgTitle(?string $og_title): self
+    public function setOgTitle(?string $ogTitle): self
     {
-        $this->og_title = $og_title;
+        $this->ogTitle = $ogTitle;
         return $this;
     }
 
@@ -69,16 +69,16 @@ trait SmoOpenGraphTrait
      */
     public function getOgType(): ?string
     {
-        return $this->og_type;
+        return $this->ogType;
     }
 
     /**
-     * @param string|null $og_type
+     * @param string|null $ogType
      * @return SmoOpenGraphTrait
      */
-    public function setOgType(?string $og_type): self
+    public function setOgType(?string $ogType): self
     {
-        $this->og_type = $og_type;
+        $this->ogType = $ogType;
         return $this;
     }
 
@@ -87,16 +87,16 @@ trait SmoOpenGraphTrait
      */
     public function getOgImage(): ?Media
     {
-        return $this->og_image;
+        return $this->ogImage;
     }
 
     /**
-     * @param Media|null $og_image
+     * @param Media|null $ogImage
      * @return SmoOpenGraphTrait
      */
-    public function setOgImage(?Media $og_image): self
+    public function setOgImage(?Media $ogImage): self
     {
-        $this->og_image = $og_image;
+        $this->ogImage = $ogImage;
         return $this;
     }
 
@@ -105,16 +105,16 @@ trait SmoOpenGraphTrait
      */
     public function getOgDescription(): ?string
     {
-        return $this->og_description;
+        return $this->ogDescription;
     }
 
     /**
-     * @param string|null $og_description
+     * @param string|null $ogDescription
      * @return SmoOpenGraphTrait
      */
-    public function setOgDescription(?string $og_description): self
+    public function setOgDescription(?string $ogDescription): self
     {
-        $this->og_description = $og_description;
+        $this->ogDescription = $ogDescription;
         return $this;
     }
 
@@ -123,16 +123,16 @@ trait SmoOpenGraphTrait
      */
     public function getOgSiteName(): ?string
     {
-        return $this->og_site_name;
+        return $this->ogSiteName;
     }
 
     /**
-     * @param string|null $og_site_name
+     * @param string|null $ogSiteName
      * @return SmoOpenGraphTrait
      */
-    public function setOgSiteName(?string $og_site_name): self
+    public function setOgSiteName(?string $ogSiteName): self
     {
-        $this->og_site_name = $og_site_name;
+        $this->ogSiteName = $ogSiteName;
         return $this;
     }
 
