@@ -11,39 +11,39 @@ trait SeoAwareTrait
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $seo_title = null;
+    private ?string $seoTitle = null;
 
     /**
      * @var string|null
      *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $seo_description = null;
+    private ?string $seoDescription = null;
 
     public function getSeoTitle(): ?string
     {
-        if ($this->seo_title === null) {
+        if ($this->seoTitle === null) {
             return $this->__toString();
         }
 
-        return $this->seo_title;
+        return $this->seoTitle;
     }
 
-    public function setSeoTitle($seo_title): self
+    public function setSeoTitle($seoTitle): self
     {
-        $this->seo_title = $seo_title;
+        $this->seoTitle = $seoTitle;
 
         return $this;
     }
 
     public function getSeoDescription(): ?string
     {
-        return $this->seo_description;
+        return $this->seoDescription;
     }
 
-    public function setSeoDescription($seo_description): self
+    public function setSeoDescription($seoDescription): self
     {
-        $this->seo_description = $seo_description;
+        $this->seoDescription = $seoDescription;
 
         return $this;
     }

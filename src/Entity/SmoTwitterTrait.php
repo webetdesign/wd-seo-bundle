@@ -10,60 +10,60 @@ trait SmoTwitterTrait
     /**
      * @var string|null
      *
-     * @ORM\Column(name="twitter_card", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $twitter_card = null;
+    private ?string $twitterCard = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="twitter_site", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $twitter_site = null;
+    private ?string $twitterSite = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="twitter_title", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $twitter_title = null;
+    private ?string $twitterTitle = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="twitter_description", type="text", nullable=true)
+     * @ORM\Column( type="text", nullable=true)
      */
-    private ?string $twitter_description = null;
+    private ?string $twitterDescription = null;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="twitter_creator", type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
-    private ?string $twitter_creator = null;
+    private ?string $twitterCreator = null;
 
     /**
      * @var Media|null
      *
      * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
      */
-    private ?Media $twitter_image = null;
+    private ?Media $twitterImage = null;
 
     /**
      * @return string|null
      */
     public function getTwitterCard(): ?string
     {
-        return $this->twitter_card;
+        return $this->twitterCard;
     }
 
     /**
-     * @param string|null $twitter_card
+     * @param string|null $twitterCard
      * @return self
      */
-    public function setTwitterCard(?string $twitter_card): self
+    public function setTwitterCard(?string $twitterCard): self
     {
-        $this->twitter_card = $twitter_card;
+        $this->twitterCard = $twitterCard;
         return $this;
     }
 
@@ -72,16 +72,16 @@ trait SmoTwitterTrait
      */
     public function getTwitterSite(): ?string
     {
-        return $this->twitter_site;
+        return $this->twitterSite;
     }
 
     /**
-     * @param string|null $twitter_site
+     * @param string|null $twitterSite
      * @return self
      */
-    public function setTwitterSite(?string $twitter_site): self
+    public function setTwitterSite(?string $twitterSite): self
     {
-        $this->twitter_site = $twitter_site;
+        $this->twitterSite = $twitterSite;
         return $this;
     }
 
@@ -90,16 +90,16 @@ trait SmoTwitterTrait
      */
     public function getTwitterTitle(): ?string
     {
-        return $this->twitter_title;
+        return $this->twitterTitle;
     }
 
     /**
-     * @param string|null $twitter_title
+     * @param string|null $twitterTitle
      * @return self
      */
-    public function setTwitterTitle(?string $twitter_title): self
+    public function setTwitterTitle(?string $twitterTitle): self
     {
-        $this->twitter_title = $twitter_title;
+        $this->twitterTitle = $twitterTitle;
         return $this;
     }
 
@@ -108,16 +108,16 @@ trait SmoTwitterTrait
      */
     public function getTwitterDescription(): ?string
     {
-        return $this->twitter_description;
+        return $this->twitterDescription;
     }
 
     /**
-     * @param string|null $twitter_description
+     * @param string|null $twitterDescription
      * @return self
      */
-    public function setTwitterDescription(?string $twitter_description): self
+    public function setTwitterDescription(?string $twitterDescription): self
     {
-        $this->twitter_description = $twitter_description;
+        $this->twitterDescription = $twitterDescription;
         return $this;
     }
 
@@ -126,16 +126,16 @@ trait SmoTwitterTrait
      */
     public function getTwitterCreator(): ?string
     {
-        return $this->twitter_creator;
+        return $this->twitterCreator;
     }
 
     /**
-     * @param string|null $twitter_creator
+     * @param string|null $twitterCreator
      * @return self
      */
-    public function setTwitterCreator(?string $twitter_creator): self
+    public function setTwitterCreator(?string $twitterCreator): self
     {
-        $this->twitter_creator = $twitter_creator;
+        $this->twitterCreator = $twitterCreator;
         return $this;
     }
 
@@ -144,16 +144,16 @@ trait SmoTwitterTrait
      */
     public function getTwitterImage(): ?Media
     {
-        return $this->twitter_image;
+        return $this->twitterImage;
     }
 
     /**
-     * @param Media|null $twitter_image
+     * @param Media|null $twitterImage
      * @return self
      */
-    public function setTwitterImage(?Media $twitter_image): self
+    public function setTwitterImage(?Media $twitterImage): self
     {
-        $this->twitter_image = $twitter_image;
+        $this->twitterImage = $twitterImage;
         return $this;
     }
 }
