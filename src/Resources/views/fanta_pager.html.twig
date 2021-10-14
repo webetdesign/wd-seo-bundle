@@ -1,0 +1,19 @@
+{% set routeName = app.request.attributes.get('_route') %}
+{% set routeParams = app.request.attributes.get('_route_params') %}
+{% if pager.nbResults is defined and pager.nbResults is not null %}
+    {% set routeParams = routeParams|merge({'page': 1}) %}
+    {% set nbPages = pager.nbResults / pager.maxPerPage %}
+    {% set currentPage = pager.currentPage %}
+    {% if currentPage > 1 %}
+        <link rel="prev" href="{{ url(routeName, routeParams|merge({'page': currentPage - 1})) }}"/>
+    {% endif %}
+    {% if currentPage < nbPages %}
+        <link rel="next" href="{{ url(routeName, routeParams|merge({'page': currentPage + 1})) }}"/>
+    {% endif %}
+{% endif %}
+{% if pager.currentPage is defined and pager.currentPage is not null %}
+    <link rel="canonical" href="{{ url(routeName, routeParams) }}"/>
+{% elseif app.request.attributes.get('_route') is not empty %}
+    {% set defaultCanonical = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+    <link rel="canonical" href="{{ defaultCanonical }}"/>
+{% endif %}

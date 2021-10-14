@@ -6,6 +6,10 @@ namespace WebEtDesign\SeoBundle\Twig;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 use WebEtDesign\CmsBundle\Entity\CmsPage;
@@ -22,13 +26,15 @@ class SeoTwigExtension extends AbstractExtension
     private WDMediaService        $mediaService;
     private WDDeclinationService  $declinationService;
     private HttpClientInterface   $client;
+    private Environment $environment;
 
     public function __construct(
         ContainerInterface $container,
         ParameterBagInterface $parameterBag,
         WDMediaService $mediaService,
         WDDeclinationService $declinationService,
-        HttpClientInterface $client
+        HttpClientInterface $client,
+        Environment $environment
     ) {
         $this->parameterBag       = $parameterBag;
         $this->mediaService       = $mediaService;
@@ -40,12 +46,14 @@ class SeoTwigExtension extends AbstractExtension
         if ($cms_vars['global_service']) {
             $this->globalVars = $container->get($cms_vars['global_service']);
         }
+        $this->environment = $environment;
     }
 
     public function getFunctions(): array
     {
         return [
             new TwigFunction('wd_seo_render_value', [$this, 'renderSeoSmo']),
+            new TwigFunction('wd_seo_pager_canonical', [$this, 'renderPagerCanonical']),
         ];
     }
 
@@ -89,6 +97,27 @@ class SeoTwigExtension extends AbstractExtension
         }
 
         return $value;
+    }
+
+    /**
+     * @param $pager
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     * @author Benjamin Robert
+     */
+    public function renderPagerCanonical($pager){
+        if(str_contains(get_class($pager), 'Pagerfanta')){
+                return $this->environment->render('@WDSeo/fanta_pager.html.twig', [
+                    'pager' => $pager
+                ]);
+        }else if(str_contains(get_class($pager), 'Knp')){
+            return $this->environment->render('@WDSeo/knp_pager.html.twig', [
+                    'pager' => $pager
+                ]);
+        }
+        return '';
     }
 
     private function getSeoSmoValueFallbackParentPage(CmsPage $object, $method)
