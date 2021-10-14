@@ -53,7 +53,7 @@ class SeoTwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('wd_seo_render_value', [$this, 'renderSeoSmo']),
-            new TwigFunction('wd_seo_pager_canonical', [$this, 'renderPagerCanonical']),
+            new TwigFunction('wd_seo_pager_canonical', [$this, 'renderPagerCanonical'], ['is_safe' => ['all']]),
         ];
     }
 
