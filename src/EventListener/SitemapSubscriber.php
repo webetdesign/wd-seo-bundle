@@ -86,7 +86,7 @@ class SitemapSubscriber implements EventSubscriberInterface
                         $config['parameters']['lastmod']);
                 }
 
-                $url = new UrlConcrete($this->urlGenerator->generate($config['route'], [],
+                $url = new UrlConcrete($this->urlGenerator->generate($config['route'], $result,
                     UrlGeneratorInterface::ABSOLUTE_URL),
                     $lastmod,
                     $config['parameters']['changefreq'] ?? null,
