@@ -9,39 +9,36 @@ use WebEtDesign\MediaBundle\Form\Type\WDMediaType;
 
 trait SmoOpenGraphAdminTrait
 {
-    public function addFormFieldSmoOpenGraph($formMapper)
+    public function addFormFieldSmoOpenGraph($formMapper, $translationDomain = 'wd_seo'): void
     {
         $formMapper
             ->with('wd_seo.form.seo.open_graph',
-                ['class' => 'col-xs-12 col-md-4', 'box_class' => ''])
+                ['class' => 'col-xs-12 col-md-4', 'box_class' => '', 'translation_domain' => $translationDomain])
             ->add('og_title', TextType::class, [
                 'label'    => 'wd_seo.form.og_title.label',
-                'required' => false
-
+                'required' => false,
             ])
             ->add('og_type', TextType::class, [
                 'label'    => 'wd_seo.form.og_type.label',
-                'required' => false
-
+                'required' => false,
             ])
             ->add('og_description', TextareaType::class, [
                 'label'    => 'wd_seo.form.og_description.label',
-                'required' => false
-
+                'required' => false,
             ])
             ->add('og_site_name', TextType::class, [
                 'label'    => 'wd_seo.form.og_site_name.label',
-                'required' => false
-
+                'required' => false,
             ])
             ->add('og_image', WDMediaType::class, [
+                'label'    => 'wd_seo.form.og_image.label',
                 'category' => 'SEO',
-                'required' => false
+                'required' => false,
             ])
             ->end();
     }
 
-    public function addShowFieldSmoOpenGraph($formMapper)
+    public function addShowFieldSmoOpenGraph($formMapper): void
     {
         $formMapper
             ->with('wd_seo.form.seo.open_graph',

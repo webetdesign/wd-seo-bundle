@@ -9,11 +9,11 @@ use WebEtDesign\MediaBundle\Form\Type\WDMediaType;
 
 trait SmoTwitterAdminTrait
 {
-    public function addFormFieldSmoTwitter($formMapper)
+    public function addFormFieldSmoTwitter($formMapper, $translationDomain = 'wd_seo'): void
     {
         $formMapper
             ->with('wd_seo.form.seo.twitter',
-                ['class' => 'col-xs-12 col-md-4', 'box_class' => ''])
+                ['class' => 'col-xs-12 col-md-4', 'box_class' => '', 'translation_domain' => $translationDomain])
             ->add('twitter_card', TextType::class, [
                 'label'    => 'wd_seo.form.twitter_card.label',
                 'required' => false
@@ -41,12 +41,13 @@ trait SmoTwitterAdminTrait
             ])
             ->add('twitter_image', WDMediaType::class, [
                 'category' => 'SEO',
-                'required' => false
+                'required' => false,
+                'label'    => 'wd_seo.form.twitter_image.label',
             ])
             ->end();
     }
 
-    public function addShowFieldSmoTwitter($formMapper)
+    public function addShowFieldSmoTwitter($formMapper): void
     {
         $formMapper
             ->with('Twitter', ['class' => 'col-xs-12 col-md-4', 'box_class' => ''])
