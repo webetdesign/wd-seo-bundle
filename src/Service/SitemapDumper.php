@@ -17,8 +17,8 @@ class SitemapDumper extends Dumper
     public function __construct(
         EventDispatcherInterface $dispatcher,
         Filesystem $filesystem,
-        string $sitemapFilePrefix = Configuration::DEFAULT_FILENAME,
         ParameterBagInterface $parameterBag,
+        string $sitemapFilePrefix = Configuration::DEFAULT_FILENAME,
         int $itemsBySet = null
     ) {
         parent::__construct($dispatcher, $filesystem, $sitemapFilePrefix, $itemsBySet);
