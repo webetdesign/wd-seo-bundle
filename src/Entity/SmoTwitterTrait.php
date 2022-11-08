@@ -2,6 +2,7 @@
 
 namespace WebEtDesign\SeoBundle\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use WebEtDesign\MediaBundle\Entity\Media;
 
@@ -12,6 +13,7 @@ trait SmoTwitterTrait
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $twitterCard = null;
 
     /**
@@ -19,6 +21,7 @@ trait SmoTwitterTrait
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $twitterSite = null;
 
     /**
@@ -26,6 +29,7 @@ trait SmoTwitterTrait
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $twitterTitle = null;
 
     /**
@@ -33,6 +37,7 @@ trait SmoTwitterTrait
      *
      * @ORM\Column( type="text", nullable=true)
      */
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $twitterDescription = null;
 
     /**
@@ -40,6 +45,7 @@ trait SmoTwitterTrait
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $twitterCreator = null;
 
     /**
@@ -47,6 +53,7 @@ trait SmoTwitterTrait
      *
      * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
      */
+    #[ORM\ManyToOne(targetEntity: Media::class, cascade: ["persist"])]
     private ?Media $twitterImage = null;
 
     /**

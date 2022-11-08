@@ -2,6 +2,7 @@
 
 namespace WebEtDesign\SeoBundle\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use WebEtDesign\MediaBundle\Entity\Media;
 
@@ -16,6 +17,7 @@ trait SmoOpenGraphTrait
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $ogTitle = null;
 
     /**
@@ -23,6 +25,7 @@ trait SmoOpenGraphTrait
      *
      * @ORM\Column(type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $ogType = null;
 
     /**
@@ -30,6 +33,7 @@ trait SmoOpenGraphTrait
      *
      * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
      */
+    #[ORM\ManyToOne(targetEntity: Media::class, cascade: ["persist"])]
     private ?Media $ogImage = null;
 
     /**
@@ -37,6 +41,7 @@ trait SmoOpenGraphTrait
      *
      * @ORM\Column(type="text", nullable=true)
      */
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $ogDescription = null;
 
     /**
@@ -44,6 +49,7 @@ trait SmoOpenGraphTrait
      *
      * @ORM\Column( type="string", nullable=true)
      */
+    #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $ogSiteName = null;
 
     /**
