@@ -14,7 +14,7 @@
   "require": {
     "php": "^7.4|^8.0",
     "presta/sitemap-bundle": "^3.0",
-    "symfony/http-client": "^4.4|^5.0",
+    "symfony/http-client": "^4.4|^5.0|^6.0",
     "webetdesign/wd-media-bundle": "3.0.*||dev-sf6"
   },
   "require-dev": {
@@ -29,3 +29,4 @@
     }
   }
 }
+
