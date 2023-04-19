@@ -33,11 +33,7 @@ trait SmoOpenGraphTrait
      *
      * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
      */
-<<<<<<< Updated upstream
-    #[ORM\ManyToOne(targetEntity: Media::class, cascade: ["persist"])]
-=======
     #[ORM\ManyToOne(targetEntity: Media::class, cascade: ['persist'])]
->>>>>>> Stashed changes
     private ?Media $ogImage = null;
 
     /**
