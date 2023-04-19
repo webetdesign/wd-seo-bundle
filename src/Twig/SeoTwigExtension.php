@@ -12,6 +12,7 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
+use WebEtDesign\CmsBundle\CMS\ConfigurationInterface;
 use WebEtDesign\CmsBundle\Entity\CmsPage;
 use WebEtDesign\CmsBundle\Services\WDDeclinationService;
 use WebEtDesign\MediaBundle\Entity\Media;
@@ -21,12 +22,12 @@ use WebEtDesign\MediaBundle\Services\WDMediaService;
 class SeoTwigExtension extends AbstractExtension
 {
 
-    private                       $globalVars = null;
-    private ParameterBagInterface $parameterBag;
-    private WDMediaService        $mediaService;
-    private WDDeclinationService  $declinationService;
-    private HttpClientInterface   $client;
-    private Environment $environment;
+    private ParameterBagInterface  $parameterBag;
+    private WDMediaService         $mediaService;
+    private WDDeclinationService   $declinationService;
+    private HttpClientInterface    $client;
+    private Environment            $environment;
+    private ConfigurationInterface $configuration;
 
     public function __construct(
         ContainerInterface $container,
@@ -34,19 +35,16 @@ class SeoTwigExtension extends AbstractExtension
         WDMediaService $mediaService,
         WDDeclinationService $declinationService,
         HttpClientInterface $client,
-        Environment $environment
+        Environment $environment,
+        ConfigurationInterface $configuration
     ) {
         $this->parameterBag       = $parameterBag;
         $this->mediaService       = $mediaService;
         $this->declinationService = $declinationService;
         $this->client             = $client;
 
-        // TODO : refactor globalVar to not use container
-        $cms_vars = $this->parameterBag->get('wd_cms.vars');
-        if ($cms_vars['global_service']) {
-            $this->globalVars = $container->get($cms_vars['global_service']);
-        }
         $this->environment = $environment;
+        $this->configuration = $configuration;
     }
 
     public function getFunctions(): array
@@ -61,7 +59,6 @@ class SeoTwigExtension extends AbstractExtension
     {
         $method     = 'get' . ucfirst($name);
         $cms_config = $this->parameterBag->get('wd_cms.cms');
-        $cms_vars   = $this->parameterBag->get('wd_cms.vars');
 
         $value = null;
         if ($object instanceof CmsPage && $cms_config['declination'] && ($declination = $this->declinationService->getDeclination($object))) {
@@ -92,8 +89,8 @@ class SeoTwigExtension extends AbstractExtension
             return $path;
         }
 
-        if ($cms_vars['enable']) {
-            $value = $this->globalVars->replaceVars($value);
+        if ($value && $this->configuration->getVarsBag()) {
+            $value = $this->configuration->getVarsBag()->replaceIn($value);
         }
 
         return $value;
