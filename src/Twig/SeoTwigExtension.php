@@ -77,7 +77,7 @@ class SeoTwigExtension extends AbstractExtension
         $value = !empty($value) ? $value : $default;
 
         if ($value instanceof Media) {
-            $path = $this->mediaService->getImagePath($value, 'default');
+            $path = $this->mediaService->getImagePathForSeo($value, 'default');
             if (preg_match('/\/resolve\//', $path)) {
                 $response = $this->client->request('GET', $path);
                 if ($response->getStatusCode() !== 200) {
