@@ -18,7 +18,7 @@ trait SmoOpenGraphTrait
      * @ORM\Column(type="string", nullable=true)
      */
     #[ORM\Column(type: Types::STRING, nullable: true)]
-    private ?string $ogTitle = null;
+    protected ?string $ogTitle = null;
 
     /**
      * @var string|null
@@ -26,7 +26,7 @@ trait SmoOpenGraphTrait
      * @ORM\Column(type="string", nullable=true)
      */
     #[ORM\Column(type: Types::STRING, nullable: true)]
-    private ?string $ogType = null;
+    protected ?string $ogType = null;
 
     /**
      * @var Media|null
@@ -34,7 +34,7 @@ trait SmoOpenGraphTrait
      * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
      */
     #[ORM\ManyToOne(targetEntity: Media::class, cascade: ['persist'])]
-    private ?Media $ogImage = null;
+    protected ?Media $ogImage = null;
 
     /**
      * @var string|null
@@ -42,7 +42,7 @@ trait SmoOpenGraphTrait
      * @ORM\Column(type="text", nullable=true)
      */
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $ogDescription = null;
+    protected ?string $ogDescription = null;
 
     /**
      * @var string|null
@@ -50,7 +50,7 @@ trait SmoOpenGraphTrait
      * @ORM\Column( type="string", nullable=true)
      */
     #[ORM\Column(type: Types::STRING, nullable: true)]
-    private ?string $ogSiteName = null;
+    protected ?string $ogSiteName = null;
 
     /**
      * @return string|null

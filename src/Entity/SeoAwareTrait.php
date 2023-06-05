@@ -13,7 +13,7 @@ trait SeoAwareTrait
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $seoTitle = null;
+    protected ?string $seoTitle = null;
 
     /**
      * @var string|null
@@ -21,7 +21,7 @@ trait SeoAwareTrait
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $seoDescription = null;
+    protected ?string $seoDescription = null;
 
     /**
      * @var string|null
@@ -29,7 +29,7 @@ trait SeoAwareTrait
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $seoKeywords = null;
+    protected ?string $seoKeywords = null;
 
     public function getSeoTitle(): ?string
     {
