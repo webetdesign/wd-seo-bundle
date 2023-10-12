@@ -3,6 +3,7 @@ wd_seo.box.general: Général
 
 wd_seo.form.seo_title.label: Titre (balise title)
 wd_seo.form.seo_description.label: Description (balise description)
+wd_seo.form.seo_preview.label: Prévisualisation résultat moteur de recherche
 
 form.group_cms_page_tab_general: Général
 form.group_wd_seo_form_seo_open_graph: Partage (OpenGraph)

@@ -1,0 +1,12 @@
+{% block google_seo_preview_widget %}
+    {% set page = form.parent.vars.value %}
+
+    <div class="google_seo_preview">
+        <div class="title">{{ page.seoTitle }}</div>
+        <div class="url">{{ page.site.host ?: app.request.host }}{{ page.route.path }}</div>
+        <div class="description">{{ page.seoDescription }}</div>
+    </div>
+
+{#    {{ dump(page) }}#}
+
+{% endblock %}
