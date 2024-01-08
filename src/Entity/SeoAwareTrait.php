@@ -1,33 +1,23 @@
 <?php
+declare(strict_types=1);
 
 namespace WebEtDesign\SeoBundle\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 trait SeoAwareTrait
 {
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     protected ?string $seoTitle = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     protected ?string $seoDescription = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     protected ?string $seoKeywords = null;
 

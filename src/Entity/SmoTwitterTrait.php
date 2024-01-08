@@ -1,58 +1,36 @@
 <?php
+declare(strict_types=1);
 
 namespace WebEtDesign\SeoBundle\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use WebEtDesign\MediaBundle\Entity\Media;
 
 trait SmoTwitterTrait
 {
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $twitterCard = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $twitterSite = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $twitterTitle = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column( type="text", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     protected ?string $twitterDescription = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $twitterCreator = null;
 
-    /**
-     * @var Media|null
-     *
-     * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
-     */
+    #[Gedmo\Versioned]
     #[ORM\ManyToOne(targetEntity: Media::class, cascade: ['persist'])]
     protected ?Media $twitterImage = null;
 
