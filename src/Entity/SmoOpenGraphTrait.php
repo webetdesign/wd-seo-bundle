@@ -1,54 +1,35 @@
 <?php
+declare(strict_types=1);
 
 namespace WebEtDesign\SeoBundle\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use WebEtDesign\MediaBundle\Entity\Media;
 
 /**
  * Trait SmoOpenGraphTrait
- * @package WebEtDesign\CmsBundle\Utils
  */
 trait SmoOpenGraphTrait
 {
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $ogTitle = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $ogType = null;
 
-    /**
-     * @var Media|null
-     *
-     * @ORM\ManyToOne(targetEntity="WebEtDesign\MediaBundle\Entity\Media", cascade={"persist"})
-     */
+    #[Gedmo\Versioned]
     #[ORM\ManyToOne(targetEntity: Media::class, cascade: ['persist'])]
     protected ?Media $ogImage = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="text", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     protected ?string $ogDescription = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column( type="string", nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, nullable: true)]
     protected ?string $ogSiteName = null;
 
