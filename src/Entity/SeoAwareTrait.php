@@ -6,6 +6,7 @@ namespace WebEtDesign\SeoBundle\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 
 trait SeoAwareTrait
 {
@@ -20,6 +21,14 @@ trait SeoAwareTrait
     #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
     protected ?string $seoKeywords = null;
+
+    #[Gedmo\Versioned]
+    #[ORM\Column(type: Types::FLOAT, length: 255, nullable: true)]
+    protected ?float $seoSitemapPriority = null;
+
+    #[Gedmo\Versioned]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    protected ?string $seoSitemapChangeFreq = null;
 
     public function getSeoTitle(): ?string
     {
@@ -65,5 +74,31 @@ trait SeoAwareTrait
         $this->seoKeywords = $seoKeywords;
     }
 
+    /**
+     * @return float|null
+     */
+    public function getSeoSitemapPriority(): ?float
+    {
+        return $this->seoSitemapPriority;
+    }
+
+    public function setSeoSitemapPriority(?float $seoSitemapPriority): self
+    {
+        $this->seoSitemapPriority = $seoSitemapPriority;
+
+        return $this;
+    }
+
+    public function getSeoSitemapChangeFreq(): ?string
+    {
+        return $this->seoSitemapChangeFreq;
+    }
+
+    public function setSeoSitemapChangeFreq(?string $seoSitemapChangeFreq): self
+    {
+        $this->seoSitemapChangeFreq = $seoSitemapChangeFreq;
+
+        return $this;
+    }
 
 }

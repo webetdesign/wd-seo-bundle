@@ -17,6 +17,15 @@ wd_seo.form.og_image.help: Taille de l'image 1200 x 627
 wd_seo.form.og_description.label: Courte description (4 phrases max.)
 wd_seo.form.og_site_name.label: Nom du site
 wd_seo.form.og_admins.label: Administrateur (obsolète)
+wd_seo.form.seo_sitemap_priority.label: Sitemap - Priorité
+wd_seo.form.seo_sitemap_change_freq.label: Sitemap - Fréquence de mise à jour
+wd_seo.form.seo_sitemap_change_freq.always: Toujours
+wd_seo.form.seo_sitemap_change_freq.hourly: Horaire
+wd_seo.form.seo_sitemap_change_freq.daily: Journalier
+wd_seo.form.seo_sitemap_change_freq.weekly: Hebdomadaire
+wd_seo.form.seo_sitemap_change_freq.monthly: Mensuel
+wd_seo.form.seo_sitemap_change_freq.yearly: Annuel
+wd_seo.form.seo_sitemap_change_freq.never: Jamais
 
 wd_seo.form.twitter_card.label: 'Type de présentation (summary|summary_large_image|app|player)'
 wd_seo.form.twitter_site.label: 'Nom du site (@compte pour lier au compte twitter)'
