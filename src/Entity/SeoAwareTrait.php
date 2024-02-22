@@ -27,8 +27,8 @@ trait SeoAwareTrait
     protected ?float $seoSitemapPriority = null;
 
     #[Gedmo\Versioned]
-    #[ORM\Column(type: Types::STRING, length: 255, nullable: true, options: ['default' => UrlConcrete::CHANGEFREQ_MONTHLY])]
-    protected ?string $seoSitemapChangeFreq = UrlConcrete::CHANGEFREQ_MONTHLY;
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    protected ?string $seoSitemapChangeFreq = null;
 
     public function getSeoTitle(): ?string
     {

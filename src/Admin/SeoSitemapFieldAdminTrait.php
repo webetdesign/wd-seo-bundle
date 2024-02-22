@@ -14,16 +14,16 @@ trait SeoSitemapFieldAdminTrait
     {
         $formMapper
             ->add('seoSitemapPriority', NumberType::class, [
-                'label'              => new TranslatableMessage('wd_seo.form.seo_sitemap_priority.label', [], $translationDomain),
-                'required'           => false,
-                'html5'              => true,
-                'scale'              => 1,
-                'attr'               => [
+                'label'       => new TranslatableMessage('wd_seo.form.seo_sitemap_priority.label', [], $translationDomain),
+                'required'    => false,
+                'html5'       => true,
+                'scale'       => 1,
+                'attr'        => [
                     'min'  => 0,
                     'max'  => 1,
                     'step' => 0.1,
                 ],
-                'constraints'        => [
+                'constraints' => [
                     new Range(min: 0, max: 1)
                 ],
             ])
