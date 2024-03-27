@@ -75,7 +75,7 @@ Hydrate the include like this on single entity page as example :
     {% elseif title is defined and title is not empty %}
         <meta property="og:title" content="{{ title }}">
     {% elseif page is defined and wd_seo_render_value(page, 'ogTitle') is not empty %}
-        <meta name="og:title" content="{{ wd_seo_render_value(page, 'ogTitle') }}">
+        <meta property="og:title" content="{{ wd_seo_render_value(page, 'ogTitle') }}">
     {% endif %}
 
     {% if object is defined and wd_seo_render_value(object, 'ogImage') is not empty %}
@@ -83,7 +83,7 @@ Hydrate the include like this on single entity page as example :
     {% elseif img is defined and img is not empty %}
         <meta property="og:image" content="{{ img }}">
     {% elseif page is defined and wd_seo_render_value(page, 'ogImage') is not empty %}
-        <meta name="og:image" content="{{ wd_seo_render_value(page, 'ogImage') }}">
+        <meta property="og:image" content="{{ wd_seo_render_value(page, 'ogImage') }}">
     {% endif %}
 
     <meta property="og:type" content="website">
@@ -99,13 +99,13 @@ Hydrate the include like this on single entity page as example :
     {% elseif desc is defined and desc is not empty %}
         <meta property="og:description" content="{{ desc|striptags|slice(0, 157) }}{{ desc|length > 157 ? "..." }}">
     {% elseif page is defined and wd_seo_render_value(page, 'ogDescription') is not empty %}
-        <meta name="og:description" content="{{ wd_seo_render_value(page, 'ogDescription') }}">
+        <meta property="og:description" content="{{ wd_seo_render_value(page, 'ogDescription') }}">
     {% endif %}
 
     {% if object is defined and wd_seo_render_value(object, 'ogSiteName') is not empty %}
         <meta property="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
     {% elseif page is defined and wd_seo_render_value(page, 'ogSiteName') is not empty %}
-        <meta name="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
+        <meta property="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
     {% endif %}
 
     <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
