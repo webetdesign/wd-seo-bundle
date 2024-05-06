@@ -105,7 +105,7 @@ Hydrate the include like this on single entity page as example :
     {% if object is defined and wd_seo_render_value(object, 'ogSiteName') is not empty %}
         <meta property="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
     {% elseif page is defined and wd_seo_render_value(page, 'ogSiteName') is not empty %}
-        <meta property="og:site_name" content="{{ wd_seo_render_value(object, 'ogSiteName') }}">
+        <meta property="og:site_name" content="{{ wd_seo_render_value(page, 'ogSiteName') }}">
     {% endif %}
 
     <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
