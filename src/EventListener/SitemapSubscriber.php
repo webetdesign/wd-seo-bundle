@@ -1,11 +1,9 @@
 <?php
 
-
 namespace WebEtDesign\SeoBundle\EventListener;
 
-
 use DateTime;
-use Doctrine\DBAL\Driver\PDO\Connection;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use PDO;
 use Presta\SitemapBundle\Event\SitemapPopulateEvent;
@@ -21,9 +19,9 @@ class SitemapSubscriber implements EventSubscriberInterface
     /**
      * @var UrlGeneratorInterface
      */
-    private UrlGeneratorInterface  $urlGenerator;
-    private ParameterBagInterface  $parameterBag;
-    private EntityManagerInterface $entityManager;
+    private UrlGeneratorInterface $urlGenerator;
+    private ParameterBagInterface $parameterBag;
+    private Connection            $connection;
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
@@ -33,11 +31,12 @@ class SitemapSubscriber implements EventSubscriberInterface
     public function __construct(
         UrlGeneratorInterface $urlGenerator,
         ParameterBagInterface $parameterBag,
-        EntityManagerInterface $entityManager
-    ) {
-        $this->urlGenerator  = $urlGenerator;
-        $this->parameterBag  = $parameterBag;
-        $this->entityManager = $entityManager;
+        Connection            $connection,
+    )
+    {
+        $this->urlGenerator = $urlGenerator;
+        $this->parameterBag = $parameterBag;
+        $this->connection   = $connection;
     }
 
     public static function getSubscribedEvents(): array
@@ -59,7 +58,7 @@ class SitemapSubscriber implements EventSubscriberInterface
     {
         $configs = $this->parameterBag->get('wd_seo.sitemap');
         /** @var Connection $con */
-        $con = $this->entityManager->getConnection()->getWrappedConnection();
+        $con = $this->connection;
 
         foreach ($configs as $config) {
             $context = $this->urlGenerator->getContext();
@@ -71,10 +70,9 @@ class SitemapSubscriber implements EventSubscriberInterface
             }
             $this->urlGenerator->setContext($context);
 
-            $stmt = $con->prepare($config['query']);
-            $stmt->execute($config['query_parameters'] ?? null);
-
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt    = $con->prepare($config['query']);
+            $query   = $stmt->executeQuery($config['query_parameters'] ?? null);
+            $results = $query->fetchAllAssociative();
 
             foreach ($results as $result) {
                 $lastmod = null;
@@ -97,10 +95,7 @@ class SitemapSubscriber implements EventSubscriberInterface
 
                 $urls->addUrl($url, $config['section']);
             }
-
         }
-
-
     }
 
 }
