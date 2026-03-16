@@ -19,7 +19,7 @@ class SitemapDumper extends Dumper
         Filesystem $filesystem,
         ParameterBagInterface $parameterBag,
         string $sitemapFilePrefix = Configuration::DEFAULT_FILENAME,
-        int $itemsBySet = null
+        ?int $itemsBySet = null
     ) {
         parent::__construct($dispatcher, $filesystem, $sitemapFilePrefix, $itemsBySet);
         $this->parameterBag = $parameterBag;
@@ -28,7 +28,7 @@ class SitemapDumper extends Dumper
 
     protected function newUrlset(
         string $name,
-        \DateTimeInterface $lastmod = null,
+        ?\DateTimeInterface $lastmod = null,
         bool $gzExtension = false
     ): Urlset {
         $config = $this->parameterBag->get('wd_seo.section_config');
