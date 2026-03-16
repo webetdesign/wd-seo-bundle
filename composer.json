@@ -16,7 +16,7 @@
     "php": "^8.2",
     "presta/sitemap-bundle": "^4.3",
     "symfony/http-client": "^4.4|^5.0|^6.0|^7.0",
-    "webetdesign/wd-media-bundle": "7.x-dev"
+    "webetdesign/wd-media-bundle": "7.*"
   },
   "require-dev": {
   },
