@@ -12,10 +12,10 @@
     }
   ],
   "require": {
-    "php": "^8.2",
-    "presta/sitemap-bundle": "^4.3",
-    "symfony/http-client": "^4.4|^5.0|^6.0|^7.0",
-    "webetdesign/wd-media-bundle": "7.*"
+    "php": "^7.4|^8.0",
+    "presta/sitemap-bundle": "^3.0",
+    "symfony/http-client": "^5.4",
+    "webetdesign/wd-media-bundle": "5.0.*"
   },
   "require-dev": {
   },
