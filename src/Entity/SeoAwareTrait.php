@@ -1,35 +1,34 @@
 <?php
+declare(strict_types=1);
 
 namespace WebEtDesign\SeoBundle\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 
 trait SeoAwareTrait
 {
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $seoTitle = null;
+    protected ?string $seoTitle = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $seoDescription = null;
+    protected ?string $seoDescription = null;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[Gedmo\Versioned]
     #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
-    private ?string $seoKeywords = null;
+    protected ?string $seoKeywords = null;
+
+    #[Gedmo\Versioned]
+    #[ORM\Column(type: Types::FLOAT, length: 255, nullable: true)]
+    protected ?float $seoSitemapPriority = null;
+
+    #[Gedmo\Versioned]
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    protected ?string $seoSitemapChangeFreq = null;
 
     public function getSeoTitle(): ?string
     {
@@ -75,5 +74,31 @@ trait SeoAwareTrait
         $this->seoKeywords = $seoKeywords;
     }
 
+    /**
+     * @return float|null
+     */
+    public function getSeoSitemapPriority(): ?float
+    {
+        return $this->seoSitemapPriority;
+    }
+
+    public function setSeoSitemapPriority(?float $seoSitemapPriority): self
+    {
+        $this->seoSitemapPriority = $seoSitemapPriority;
+
+        return $this;
+    }
+
+    public function getSeoSitemapChangeFreq(): ?string
+    {
+        return $this->seoSitemapChangeFreq;
+    }
+
+    public function setSeoSitemapChangeFreq(?string $seoSitemapChangeFreq): self
+    {
+        $this->seoSitemapChangeFreq = $seoSitemapChangeFreq;
+
+        return $this;
+    }
 
 }

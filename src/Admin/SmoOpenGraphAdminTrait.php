@@ -45,11 +45,11 @@ trait SmoOpenGraphAdminTrait
                 ['class' => 'col-xs-12 col-md-4', 'box_class' => ''])
             ->add('og_title', null, ['label' => 'wd_seo.form.og_title.label'])
             ->add('og_type', null, ['label' => 'wd_seo.form.og_type.label'])
-            ->add('og_url', null, ['label' => 'wd_seo.form.og_url.label'])
+//            ->add('og_url', null, ['label' => 'wd_seo.form.og_url.label'])
             ->add('og_image', null, ['label' => 'wd_seo.form.og_image.label'])
             ->add('og_description', null, ['label' => 'wd_seo.form.og_description.label'])
             ->add('og_site_name', null, ['label' => 'wd_seo.form.og_site_name.label'])
-            ->add('og_admins', null, ['label' => 'wd_seo.form.og_admins.label'])
+//            ->add('og_admins', null, ['label' => 'wd_seo.form.og_admins.label'])
             ->end();
     }
 }

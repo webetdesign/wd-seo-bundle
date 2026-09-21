@@ -18,7 +18,7 @@ class SitemapGenerator extends Generator
         EventDispatcherInterface $dispatcher,
         UrlGeneratorInterface $router,
         ParameterBagInterface $parameterBag,
-        int $itemsBySet = null
+        ?int $itemsBySet = null
     )
     {
         $this->parameterBag = $parameterBag;
@@ -26,7 +26,7 @@ class SitemapGenerator extends Generator
     }
 
 
-    protected function newUrlset(string $name, \DateTimeInterface $lastmod = null): Urlset
+    protected function newUrlset(string $name, ?\DateTimeInterface $lastmod = null): Urlset
     {
         $config = $this->parameterBag->get('wd_seo.section_config');
         $default_context = $this->router->getContext();
