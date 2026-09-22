@@ -6,7 +6,7 @@ namespace WebEtDesign\SeoBundle\Service;
 use Presta\SitemapBundle\DependencyInjection\Configuration;
 use Presta\SitemapBundle\Sitemap\Urlset;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Presta\SitemapBundle\Service\Dumper;
 
