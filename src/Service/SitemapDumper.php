@@ -8,6 +8,7 @@ use Presta\SitemapBundle\Sitemap\Urlset;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Presta\SitemapBundle\Service\Dumper;
 
 class SitemapDumper extends Dumper
@@ -17,11 +18,12 @@ class SitemapDumper extends Dumper
     public function __construct(
         EventDispatcherInterface $dispatcher,
         Filesystem $filesystem,
+        UrlGeneratorInterface $urlGenerator,
         ParameterBagInterface $parameterBag,
         string $sitemapFilePrefix = Configuration::DEFAULT_FILENAME,
         ?int $itemsBySet = null
     ) {
-        parent::__construct($dispatcher, $filesystem, $sitemapFilePrefix, $itemsBySet);
+        parent::__construct($dispatcher, $filesystem, $urlGenerator, $sitemapFilePrefix, $itemsBySet);
         $this->parameterBag = $parameterBag;
     }
 

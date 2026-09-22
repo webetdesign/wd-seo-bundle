@@ -6,7 +6,6 @@ namespace WebEtDesign\SeoBundle\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Presta\SitemapBundle\Sitemap\Url\UrlConcrete;
 
 trait SeoAwareTrait
 {
@@ -100,5 +99,4 @@ trait SeoAwareTrait
 
         return $this;
     }
-
 }
