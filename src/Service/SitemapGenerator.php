@@ -7,7 +7,7 @@ namespace WebEtDesign\SeoBundle\Service;
 use Presta\SitemapBundle\Service\Generator;
 use Presta\SitemapBundle\Sitemap\Urlset;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SitemapGenerator extends Generator
